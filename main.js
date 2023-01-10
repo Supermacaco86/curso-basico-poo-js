@@ -51,3 +51,67 @@ const juanita = new Student(
     ["Curso de creacion de videojuego",
 "Curso de creacion de personajes"]
 )
+
+// Prototipos con la sintaxis de clase:
+// Tanto en esta sintaxis como en la anterior si queremos crear instancias debemos 
+    // recordar el orden de los argumentos... 
+
+class Student2 {
+    constructor(name, age, cursosAprobados){
+        this.name = name;
+        this.age = age;
+        this.cursosAprobados = cursosAprobados;
+        // this.aprobarCurso = function (nuevoCurso){
+        //     this.cursosAprobados.push(nuevoCurso)
+        // } Podemos crear metodos de esta manera o
+    };
+
+    // Despues del metodo constructor, podemos crear los metodos que querramos por fuera:
+    
+    aprobarCurso(nuevoCurso){
+        this.cursosAprobados.push(nuevoCurso);
+
+    };
+};
+
+// En este caso, cuando creamos las nueva instancia, debemos agregar ademas de 
+// las llaves, las keys de los argumentos con sus dos puntos y el value que le vamos
+// a asignar:
+
+const miguelito2 = new Student2 (
+    "Miguel",
+    28,
+    [
+        "Curso Analisis de negocios",
+        "Curso de principios de visualizacion de datos",
+]
+);
+
+// Si en los paramentros de la funcion constructora agregamos las llaves de objeto
+// ya no es nesesario recordar el orden de los argumentos:
+// Solo que cuando creamos la nueva instancia, devemos agregar las llaves tambien
+// Ademas en esta sintaxis podemos indicar valores por defecto
+class Student2 {
+    constructor({
+        name,
+        age,
+        cursosAprobados = [],
+    }){
+        this.name = name;
+        this.age = age;
+        this.cursosAprobados = cursosAprobados;
+    };
+        aprobarCurso(nuevoCurso){
+        this.cursosAprobados.push(nuevoCurso);
+
+    };
+};
+
+const miguelito = new Student2 ({
+    nombre:"Miguel",
+    age:28,
+    cursosAprobados: [
+        "Curso Analisis de negocios",
+        "Curso de principios de visualizacion de datos",
+]}
+);
