@@ -118,6 +118,8 @@ const miguelito = new Student2 ({
 
 //__________________________________________________________________________________//
 
+// Cuatro pilares de la programacion orientada a objetos:
+// Abstraccion, encapsulamiento, herencia y polimorfismo. 
 
 // Abstraccion:
 // Al constructor le pasamos solo un parametro que es un objeto que tiene diferentes 
@@ -258,7 +260,7 @@ const pedro = new Student3 ({
 // podemos utilizar dos funciones, los gettes y los setters:
 
 
-class Course1{
+class CourseEncapsulamiento{
     constructor({
         name,
         clasess = [],
@@ -280,7 +282,7 @@ class Course1{
 
 
 
-const cursoProgrBasica1 = new Course({
+const cursoProgrBasica1 = new CourseEncapsulamiento({
     name: "Curso gratis de programacion basica",
 })
 
@@ -330,3 +332,40 @@ export class PlatziClass { // unica funcion a la que va a poder acceder el html
         videoStop(this.videoID);
     }
 }
+
+//__________________________________________________________________________//
+
+// Herencia
+// La herencia nos permite, justamente heredar propiedades de un prototipo madre
+// a prototipos hijos, para asi evitar repetir codigo. Para esto vamos a utilizar
+// la palabra reservada extends.
+
+class StudentHerencia {
+    constructor({
+        name,
+        email,
+        userName,
+        twitter = undefined,
+        instagram = undefined,
+        faceboock = undefined,
+        approvedCourses = [],
+        learningPath = [],
+    }){
+        this.name = name;
+        this.email = email;
+        this.userName = userName;
+        this.socialMedia = {
+            twitter,
+            instagram,
+            faceboock,
+        };
+        this.approvedCourses = approvedCourses;
+        this.learningPath = learningPath;
+    };
+};
+
+class FreeStudent extends StudentHerencia{}
+
+class BasicStudent extends StudentHerencia{}
+
+class ExpertStudent extends StudentHerencia{}
