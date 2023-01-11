@@ -255,7 +255,8 @@ const pedro = new Student3 ({
 // Getters y Setters
 // Si a nuestros atributos les anteponemos un guion bajo en su nombre, le estamos
 // indicando a los demas desarrolladores que no modifiquen estos atributos. Esto
-// es solo una convencion.
+// es solo una convencion. Pero para hacer un poco mas privado nuestro codigo, 
+// podemos utilizar dos funciones, los gettes y los setters:
 
 
 class Course1{
@@ -291,3 +292,5 @@ const cursoProgrBasica1 = new Course({
 // cursoProgrBasica.name
 // Nos va a retornar esto:
 // "Curso gratis de programacion basica"
+
+//_________________________________________________________________________//
