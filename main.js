@@ -116,12 +116,92 @@ const miguelito = new Student2 ({
 ]}
 );
 
+//__________________________________________________________________________________//
+
 // Al constructor le pasamos solo un parametro que es un objeto que tiene diferentes 
 // propiedades. Esto nos permite a la hora de crear instancias, que podemos pasarle 
 // menos propiedades y va a funcionar igual. Ademas podemos pasarle varias atributos
 // sin nesesidad de respetar el orden de las mismas. Y ademas podemos asignarles un 
 // valor por defecto. Si le asignamos el valor undefine, le estamos indicando que ese
 // parametro no es obligatorio:
+
+
+class Course{
+    constructor({
+        name,
+        clasess = [],
+    }){
+        this.name = name;
+        this.clasess = clasess;
+    }
+}
+
+const cursoProgrBasica = new Course({
+    name: "Curso gratis de programacion basica",
+})
+
+const cursoDefinitivoHTML = new Course({
+    name:  "Curso definitivo de HTML y CSS",
+})
+
+const cursoPracticoHTML = new Course({
+    name: "Curso practico de HTML y CSS",
+})
+
+const cursoDataBusiness = new Course({
+    name: "Curso DataBusiness",
+})
+
+const cursoDataviz = new Course({
+    name:  "Curso Dataviz",
+})
+
+const cursoUnity = new Course({
+    name:  "Curso de Unity",
+})
+
+const cursoUnreal = new Course({
+    name: "Curso de Unreal",  
+})
+
+
+class LearningPath{
+    constructor({
+        name,
+        courses = [],
+    }){
+        this.name = name;
+        this.courses = courses;
+    }
+}
+
+const escuelaWeb = new LearningPath({
+    name: "Escuela de desarrollo web",
+    courses: [
+        cursoProgrBasica,
+        cursoDefinitivoHTML,
+        cursoPracticoHTML,       
+    ]
+});
+
+const escuelaData = new LearningPath({
+    name: "Escuela de Data Science",
+    courses: [
+        cursoProgrBasica,
+        cursoDataBusiness,
+        cursoDataviz,    
+    ]
+});
+const escuelaVgs = new LearningPath({
+    name: "Escuela de Video Juegos",
+    courses: [
+        cursoProgrBasica,
+        cursoUnity,
+        cursoUnreal,  
+    ]
+});
+
+
 class Student3 {
     constructor({
         name,
@@ -151,4 +231,19 @@ const juan = new Student3 ({
     userName: "Juan",
     email: "juan@juan.com",
     twitter: "juan",
+    learningPath: [
+        "escuelaWeb",
+        "escuelaVgs",
+    ]
+})
+
+const pedro = new Student3 ({
+    name: "Pedro",
+    userName: "Pedro",
+    email: "pedro@pedro.com",
+    twitter: "Pedro",
+    learningPath: [
+        "escuelaWeb",
+        "escuelaData",
+    ]
 })
