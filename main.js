@@ -340,6 +340,53 @@ export class PlatziClass { // unica funcion a la que va a poder acceder el html
 // a prototipos hijos, para asi evitar repetir codigo. Para esto vamos a utilizar
 // la palabra reservada extends.
 
+class CourseHerencia{
+    constructor({
+        name,
+        clasess = [],
+        isFree = false,
+        lang = "Spanish"
+    }){
+        this.name = name;
+        this.clasess = clasess;
+        this.isFree = isFree;
+        this.lang = lang;
+    }
+}
+
+const cursoProgrBasicaHerencia = new Course({
+    name: "Curso gratis de programacion basica",
+    isFree: true,
+})
+
+const cursoDefinitivoHTMLHerencia = new Course({
+    name:  "Curso definitivo de HTML y CSS",
+})
+
+const cursoPracticoHTMLHerencia = new Course({
+    name: "Curso practico de HTML y CSS",
+    lang: "English",
+})
+
+const cursoDataBusinessHerencia = new Course({
+    name: "Curso DataBusiness",
+})
+
+const cursoDatavizHerncia = new Course({
+    name:  "Curso Dataviz",
+    lang: "English",
+})
+
+const cursoUnityHerencia = new Course({
+    name:  "Curso de Unity",
+})
+
+const cursoUnrealHerencia = new Course({
+    name: "Curso de Unreal",
+    lang: "English",  
+})
+
+
 class StudentHerencia {
     constructor({
         name,
@@ -364,8 +411,70 @@ class StudentHerencia {
     };
 };
 
-class FreeStudent extends StudentHerencia{}
+class FreeStudent extends StudentHerencia{
+    constructor(props){
+        super(props) // El super nos permite referenciar a la clase madre.
+    }
+    approvedCourses(newCourse){
+        if(newCourse.isFree){
+            this.approvedCourses.push(newCourse);
+        }else{
+            console.warn("Lo siento,"+ this.name +", solo puedes tomar cursos free." )
+        }
+    }
+}
 
-class BasicStudent extends StudentHerencia{}
+class BasicStudent extends StudentHerencia{
+    constructor(props){
+        super(props) 
+    }
+    approvedCourses(newCourse){
+        if(newCourse.lang !== "English"){
+            this.approvedCourses.push(newCourse);
+        }else{
+            console.warn("Lo siento,"+ this.name +", solo puedes tomar cursos en Español." )
+        }
+    }
+}
 
-class ExpertStudent extends StudentHerencia{}
+class ExpertStudent extends StudentHerencia{
+    constructor(props){
+        super(props) 
+    }
+    approvedCourses(newCourse){
+            this.approvedCourses.push(newCourse);
+    }
+}
+
+const juanHerencia = new FreeStudent ({
+    name: "Juan",
+    userName: "Juan",
+    email: "juan@juan.com",
+    twitter: "juan",
+    learningPath: [
+        "escuelaWeb",
+        "escuelaVgs",
+    ]
+})
+
+const pedroHerencia = new BasicStudent ({
+    name: "Pedro",
+    userName: "Pedro",
+    email: "pedro@pedro.com",
+    twitter: "Pedro",
+    learningPath: [
+        "escuelaWeb",
+        "escuelaData",
+    ]
+})
+
+const aguHerencia = new ExpertStudent ({
+    name: "Pedro",
+    userName: "Pedro",
+    email: "pedro@pedro.com",
+    twitter: "Pedro",
+    learningPath: [
+        "escuelaWeb",
+        "escuelaData",
+    ]
+})
