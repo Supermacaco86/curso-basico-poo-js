@@ -251,8 +251,7 @@ const pedro = new Student3 ({
 })
 
 //_______________________________________________________________________________//
-// Encapsulamiento:
-// Getters y Setters
+// Encapsulamiento con Getters y Setters
 // Si a nuestros atributos les anteponemos un guion bajo en su nombre, le estamos
 // indicando a los demas desarrolladores que no modifiquen estos atributos. Esto
 // es solo una convencion. Pero para hacer un poco mas privado nuestro codigo, 
@@ -294,3 +293,40 @@ const cursoProgrBasica1 = new Course({
 // "Curso gratis de programacion basica"
 
 //_________________________________________________________________________//
+
+// Encapsulamiento con modulos de ECMAscript6
+// Para utilizar los modulos debemos cambiarle la extencio al achivo main que llamamos
+// en el scrip de html, por la extencion: mjs, nuetro script quedaría así:
+// main.mjs y tambien le agragamos que es de type="module":
+// <script src="./main.mjs" type="module"></script>
+// entonces agregando la pabra reservada export, le indicamos al html a que podrá
+// acceder. Esto lo logramos cambiando el scrip anterior por este script al html:
+// <script type="module"> import {PlatziClass} from "./main.mjs"; </script>
+
+function videoPlay(id){
+    const urlSecreta = "http://blablabla" + id
+    console.log("Se está reproduciento" + urlSecreta)
+}
+
+function videoStop(id){
+    const urlSecreta = "http://blablabla" + id
+    console.log("Se pausó" + urlSecreta)
+}
+
+export class PlatziClass { // unica funcion a la que va a poder acceder el html
+    constructor({
+        name,
+        videoID,
+    }){
+        this.name = name;
+        this.videoID = videoID;
+
+    }
+
+    reproducir(){
+        videoPlay(this.videoID);
+    }
+    pausar(){
+        videoStop(this.videoID);
+    }
+}
