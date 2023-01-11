@@ -249,3 +249,45 @@ const pedro = new Student3 ({
         "escuelaData",
     ]
 })
+
+//_______________________________________________________________________________//
+// Encapsulamiento:
+// Getters y Setters
+// Si a nuestros atributos les anteponemos un guion bajo en su nombre, le estamos
+// indicando a los demas desarrolladores que no modifiquen estos atributos. Esto
+// es solo una convencion.
+
+
+class Course1{
+    constructor({
+        name,
+        clasess = [],
+    }){
+        this._name = name;
+        this.clasess = clasess;
+    }
+    get name(){   //Getter
+        return this._name
+    }
+    set name(nuevoNombre){  //Setter
+        if(nuevoNombre === "Curso malo"){
+            console.error("Ese nombre no es valido")
+        }else{
+            this._name = nuevoNombre
+        }
+    }
+}
+
+
+
+const cursoProgrBasica1 = new Course({
+    name: "Curso gratis de programacion basica",
+})
+
+// Para poder cambiar el nombre con el setter, debemos utilizar dot notation
+//cursoProgrBasica1.name = "nuevoNombre"
+
+// Si lo llamamos de esta manera:
+// cursoProgrBasica.name
+// Nos va a retornar esto:
+// "Curso gratis de programacion basica"
