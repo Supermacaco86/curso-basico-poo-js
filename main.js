@@ -118,6 +118,8 @@ const miguelito = new Student2 ({
 
 //__________________________________________________________________________________//
 
+
+// Abstraccion:
 // Al constructor le pasamos solo un parametro que es un objeto que tiene diferentes 
 // propiedades. Esto nos permite a la hora de crear instancias, que podemos pasarle 
 // menos propiedades y va a funcionar igual. Ademas podemos pasarle varias atributos
