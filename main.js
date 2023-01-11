@@ -115,3 +115,40 @@ const miguelito = new Student2 ({
         "Curso de principios de visualizacion de datos",
 ]}
 );
+
+// Al constructor le pasamos solo un parametro que es un objeto que tiene diferentes 
+// propiedades. Esto nos permite a la hora de crear instancias, que podemos pasarle 
+// menos propiedades y va a funcionar igual. Ademas podemos pasarle varias atributos
+// sin nesesidad de respetar el orden de las mismas. Y ademas podemos asignarles un 
+// valor por defecto. Si le asignamos el valor undefine, le estamos indicando que ese
+// parametro no es obligatorio:
+class Student3 {
+    constructor({
+        name,
+        email,
+        userName,
+        twitter = undefined,
+        instagram = undefined,
+        faceboock = undefined,
+        approvedCourses = [],
+        learningPath = [],
+    }){
+        this.name = name;
+        this.email = email;
+        this.userName = userName;
+        this.socialMedia = {
+            twitter,
+            instagram,
+            faceboock,
+        };
+        this.approvedCourses = approvedCourses;
+        this.learningPath = learningPath;
+    };
+};
+
+const juan = new Student3 ({
+    name: "Juan",
+    userName: "Juan",
+    email: "juan@juan.com",
+    twitter: "juan",
+})
