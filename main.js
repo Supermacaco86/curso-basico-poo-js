@@ -478,3 +478,85 @@ const aguHerencia = new ExpertStudent ({
         "escuelaData",
     ]
 })
+
+//___________________________________________________________________//
+
+// Polimorfismo
+// El polimorfismo permite que las subclases puedan editar y/o anulas el 
+// comportamiento de los metodos y/o atributos heredado de la clase madre,
+// o super clase.
+
+class Comment{
+    constructor({
+        content,
+        studentName,
+        studentRole = "estudiante",
+    }){
+        this.content = content;
+        this.studentName = studentName;
+        this.studentRole = studentRole;
+        this.likes = 0;
+    }    
+    publicar(){
+        console.log(this.studentName + " (" + this.studentRole + ")");
+        console.log(this.likes + " likes");
+        console.log(this.content);
+
+    }
+}
+
+class StudentPolimorfismo {
+    constructor({
+        name,
+        email,
+        userName,
+        twitter = undefined,
+        instagram = undefined,
+        faceboock = undefined,
+        approvedCourses = [],
+        learningPath = [],
+    }){
+        this.name = name;
+        this.email = email;
+        this.userName = userName;
+        this.socialMedia = {
+            twitter,
+            instagram,
+            faceboock,
+        };
+        this.approvedCourses = approvedCourses;
+        this.learningPath = learningPath;
+    };
+    publicarComentario(commentContent){
+        const comment = new Comment({
+            content: commentContent,
+            studentName: this.name,
+        });
+        comment.publicar();
+    }
+};
+
+class TeacherStudent extends StudentHerencia{
+    constructor(props){
+        super(props) 
+    }
+    approvedCourses(newCourse){
+            this.approvedCourses.push(newCourse);
+    }
+    publicarComentario(commentContent){
+        const comment = new Comment({
+            content: commentContent,
+            studentName: this.name,
+            studentRole: "profesor",
+        });
+        comment.publicar();
+    }
+
+}
+
+const freddy = new TeacherStudent ({
+    name: "freddy",
+    userName: "Pfreddyedro",
+    email: "freddy@freddy.com",
+    twitter: "freddy",
+})
